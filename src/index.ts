@@ -2,7 +2,7 @@ import { ErrorRequestHandler, NextFunction, Request, RequestHandler, Response } 
 
 import { AsyncErrorRequestHandler, AsyncRequestHandler } from './handler';
 
-export = (fn: AsyncRequestHandler | AsyncErrorRequestHandler): RequestHandler | ErrorRequestHandler => {
+export function wrap(fn: AsyncRequestHandler | AsyncErrorRequestHandler): RequestHandler | ErrorRequestHandler {
   if (fn.length < 4) {
     return (req: Request, res: Response, next: NextFunction): any => {
       return (<AsyncRequestHandler> fn)(req, res, next).catch(next);
@@ -12,4 +12,4 @@ export = (fn: AsyncRequestHandler | AsyncErrorRequestHandler): RequestHandler | 
       return (<AsyncErrorRequestHandler> fn)(err, req, res, next).catch(next);
     };
   }
-};
+}

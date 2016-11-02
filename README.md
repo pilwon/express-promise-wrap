@@ -14,7 +14,7 @@
 ## Usage
 
 ```js
-const wrap = require('express-promise-wrap');
+const { wrap } = require('express-promise-wrap');
 // ...
 app.get('/path', wrap(async (req, res) => {...}));
 ```
