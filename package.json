@@ -1,6 +1,6 @@
 {
   "name": "express-promise-wrap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Express helper that allows the use of async functions as route handlers",
   "license": "MIT",
   "author": {
