@@ -1,6 +1,7 @@
 import { ErrorRequestHandler, NextFunction, Request, RequestHandler, Response } from 'express';
 
-import { AsyncErrorRequestHandler, AsyncRequestHandler } from './handler';
+export type AsyncRequestHandler = (req: Request, res: Response, next: NextFunction) => Promise<any>;
+export type AsyncErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => Promise<any>;
 
 export function wrap(fn: AsyncRequestHandler | AsyncErrorRequestHandler): RequestHandler | ErrorRequestHandler {
   if (fn.length < 4) {
